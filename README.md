@@ -16,4 +16,4 @@ that information manually and fill in the appropriate checklist.
 The audit scripts have been tested on AIX, Debian GNU/Linux, Ubuntu Linux,
 Red Hat Linux, SuSE Linux, HPUX, Solaris and Windows.
 
-Please note that the Oracle and Windows scripts one are incomplete at the moment.
+Please note that the Oracle and Windows scripts are incomplete at the moment.
