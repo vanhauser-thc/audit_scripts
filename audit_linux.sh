@@ -162,7 +162,7 @@ echo "$OLD_UMASK" > umask.out
 
 # IP Filtering 
 # For 4.x kernels
-nft list ruleset -n >nft.out 2>/dev/null
+nft -n list ruleset >nft.out 2>/dev/null
 # For 2.4+ kernels
 iptables -nvL >iptables.out 2>/dev/null
 ip6tables -nvL >ip6tables.out 2>/dev/null
@@ -217,6 +217,7 @@ tar cf home.tar /.*bash* /.netrc /.rhosts /.log* /.*csh* /.Xa* \
  /root/.*bash* /root/.netrc /root/.rhosts /root/.log* /root/.*csh* \
  /root/.Xa* /root/.prof* 2> /dev/null
 
+find / \( -perm -4000 -o -perm -2000 \) -type f > suid.out 2>/dev/null
 find / \( -perm -4000 -o -perm -2000 \) -type f -exec /bin/ls -ld {} \; > find-s_id.out 2>/dev/null
 find / -perm -2 '!' -type l -exec /bin/ls -ld {} \; > find-write.out 2>/dev/null
 
