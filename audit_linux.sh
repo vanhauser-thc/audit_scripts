@@ -54,7 +54,7 @@ FILE_LIST_ETC="/etc/aliases /etc/group /etc/cron* /etc/export* /etc/profile \
  /etc/courier /etc/cups /etc/dhcp* /etc/*ssh*/ssh*conf* /etc/xinetd* \
  /etc/*/*conf /usr/local/etc /etc/squid* /etc/ldap /etc/openldap /etc/squid \
  /etc/rpm /etc/up2date/ /etc/sysconfig /etc/php* /etc/apache* /etc/exim* \
- /etc/apt* /etc/system* "
+ /etc/apt* /etc/system* /lib/systemd/"
 
 test "`id -u`" -ne 0 && echo "WARNING: Not running as root, a lot of information will not be gathered!"
 
