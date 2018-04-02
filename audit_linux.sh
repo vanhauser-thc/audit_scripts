@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audit Linux Script v2.5 (c) 2001-2017 by Marc Heuse <mh@mh-sec.de>
+# Audit Linux Script v2.6 (c) 2001-2018 by Marc Heuse <mh@mh-sec.de>
 #
 # For all Linux platforms: SuSE, Redhat, Debian, Ubuntu, ...
 # and embedded with limited busybox
@@ -152,6 +152,14 @@ ss -lnp6 >> ss.out
 # Linux kernel settings
 SYSCTL=`which sysctl 2> /dev/null`
 test -n "$SYSCTL" && sysctl -a > sysctl.out 2>/dev/null
+#kernel vulnerability patches
+> vulnerabilities.out
+test -d "/sys/devices/system/cpu/vulnerabilities" && {
+  for i in /sys/devices/system/cpu/vulnerabilities/* ; do
+    echo -n "$i = "
+    cat $i
+  done > vulnerabilities.out
+}
 # Shared memory
 ipcs -ma > shmem1.out
 ipcs -pa > shmem2.out
