@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audit Linux Script v2.6 (c) 2001-2018 by Marc Heuse <mh@mh-sec.de>
+# Audit Linux Script v2.7 (c) 2001-2019 by Marc Heuse <mh@mh-sec.de>
 #
 # For all Linux platforms: SuSE, Redhat, Debian, Ubuntu, ...
 # and embedded with limited busybox
@@ -48,7 +48,7 @@ FILE_LIST_ETC="/etc/aliases /etc/group /etc/cron* /etc/export* /etc/profile \
  /etc/login* /etc/*ftp* /etc/host* /etc/inittab /etc/issue* /etc/motd \
  /etc/csh* /etc/shells /etc/secur* /etc/sock* /etc/yp* /etc/fstab /etc/snmp* \
  /etc/hosts* /etc/sudoers /etc/default/  /sbin/init.d /etc/pam* /etc/cron* \
- /etc/*conf* /etc/*cfg* /etc/*.d /etc/rc* /etc/pass* /etc/sha* \
+ /etc/*conf* /etc/*cfg* /etc/*.d /etc/rc* /etc/pass* /etc/sha* /etc/docker* \
  /usr/local/etc/ /etc/mail/ /etc/sendmail.cf  /etc/http* /etc/samba/ \
  /etc/bind /etc/named /etc/postfix /etc/postgresql /etc/mysql /etc/qmail \
  /etc/courier /etc/cups /etc/dhcp* /etc/*ssh*/ssh*conf* /etc/xinetd* \
