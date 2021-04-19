@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audit Linux Script v2.7 (c) 2001-2019 by Marc Heuse <mh@mh-sec.de>
+# Audit Linux Script v2.8 (c) 2001-2021 by Marc Heuse <mh@mh-sec.de>
 #
 # For all Linux platforms: SuSE, Redhat, Debian, Ubuntu, ...
 # and embedded with limited busybox
@@ -228,6 +228,7 @@ tar cf home.tar /.*bash* /.netrc /.rhosts /.log* /.*csh* /.Xa* \
 find / \( -perm -4000 -o -perm -2000 \) -type f > suid.out 2>/dev/null
 find / \( -perm -4000 -o -perm -2000 \) -type f -exec /bin/ls -ld {} \; > find-s_id.out 2>/dev/null
 find / -perm -2 '!' -type l -exec /bin/ls -ld {} \; > find-write.out 2>/dev/null
+find / -type f -perm -1 -exec getcap {} \; > find-cap.out 2>/dev/null
 
 # get kernel config
 modprobe configs
