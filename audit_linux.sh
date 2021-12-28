@@ -168,6 +168,11 @@ ipcs -pa > shmem2.out
 echo "$OLD_ENV" > env.out
 echo "$OLD_UMASK" > umask.out
 
+# LCX container
+lxc-ls -f -Fname,pid,state,autostart >lxc.out 2>/dev/null
+# Docker container
+docker ps >docker.out 2>/dev/null
+
 # IP Filtering 
 # For 4.x kernels
 nft -n list ruleset >nft.out 2>/dev/null
