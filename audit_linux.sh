@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audit Linux Script v2.8 (c) 2001-2021 by Marc Heuse <mh@mh-sec.de>
+# Audit Linux Script v2.8 (c) 2001-2022 by Marc Heuse <mh@mh-sec.de>
 #
 # For all Linux platforms: SuSE, Redhat, Debian, Ubuntu, ...
 # and embedded with limited busybox
