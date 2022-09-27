@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audit Linux Script v2.8 (c) 2001-2022 by Marc Heuse <mh@mh-sec.de>
+# Audit Linux Script v2.9 (c) 2001-2022 by Marc Heuse <mh@mh-sec.de>
 #
 # For all Linux platforms: SuSE, Redhat, Debian, Ubuntu, ...
 # and embedded with limited busybox
@@ -168,10 +168,28 @@ ipcs -pa > shmem2.out
 echo "$OLD_ENV" > env.out
 echo "$OLD_UMASK" > umask.out
 
-# LCX container
-lxc-ls -f -Fname,pid,state,autostart >lxc.out 2>/dev/null
 # Docker container
 docker ps >docker.out 2>/dev/null
+
+# LCX container
+lxc-ls > lxc-ls.out 2>/dev/null
+lxc-ls -f -Fname,pid,state,autostart >lxc.out 2>/dev/null
+for i in `cat lxc-ls.out`; do
+  lxc-info -n $i > lxc-info-$i.out
+  lxc-ps -n $i > lxc-ps-$i.out
+  lxc-cgroup -n $i devices.list > lxc-devices-$i.out
+done 2>/dev/null
+
+# SELinux
+test -e /sys/fs/selinux/policy && cp -v /sys/fs/selinux/policy selinux.policy 2>/dev/null
+test -e selinux.policy && cp -v /selinux/policy selinux.policy 2>/dev/null
+test -e selinux.policy && ps -lZ > ps-selinux.out 2>/dev/null
+test -e selinux.policy && ls -lRZ /etc /tmp /opt /usr/local /var > ls-selinux.out 2>/dev/null
+test -e selinux.policy && sestatus -v > sestatus-selinux.out 2>/dev/null
+test -e selinux.policy && semanage export -f semanage.out 2>/dev/null
+test -e selinux.policy && for i in fcontext login user port boolean; do
+  semanage $i –l > selinux-$i.out
+done 2>/dev/null
 
 # IP Filtering 
 # For 4.x kernels
