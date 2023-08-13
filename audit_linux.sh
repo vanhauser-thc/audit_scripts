@@ -82,6 +82,7 @@ if [ -d /var/log/sa ] ; then
   tar cf system-act.tar /var/log/sa/ 2>/dev/null
 fi
 dmesg > dmesg.out 2>/dev/null
+journalctl -k > dmesg2.out 2>/dev/null
 
 # Machine name
 uname -a > uname.out  2>/dev/null
